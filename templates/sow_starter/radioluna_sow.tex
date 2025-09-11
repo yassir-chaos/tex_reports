@@ -1,0 +1,214 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use either a4paper or letterpaper
+	%unnumberedsections, % Uncomment for no section numbering
+]{ChaosEngineReport}
+
+
+\newcommand{\signature}[3]{% <--- important %
+    \vspace{15mm}
+    Approved: \hrulefill
+    
+    \hspace*{0mm}\phantom{Approved: }\textbf{#1}
+    
+    \hspace*{0mm}\phantom{Approved: }#2 at #3
+}
+
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{callout_box}[2][]{breakable,sharp corners, skin=enhancedmiddle jigsaw,parbox=false,
+boxrule=0mm,leftrule=2mm,boxsep=0mm,arc=0mm,outer arc=0mm,attach title to upper,
+after title={\ }, coltitle=black,colback=gray!10,colframe=black, title={#2},
+fonttitle=\bfseries,#1}
+%--------------------------------------------------------------------------------------
+%	REPORT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\reporttitle{RadioLuna} % The report title to appear on the title page, include new lines if needed
+
+\reportsubtitle{COTS Receiver Feasibility - Statement of Work (DRAFT)} % Report subtitle, include new lines if needed
+
+\reportauthors{Prepared for \textbf{Thalatta Consulting Ltd} by:\\\smallskip Dr. Ahmed Al-Refaie (ahmed@chaos-engine.co) \\\smallskip Yassir Al-Refaie (yassir@chaos-engine.co)} % Report authors/group/department, include new lines if needed
+
+\reportdate{\today} % Report date, include new lines for additional information if needed
+
+\leftheadercontent{RadioLuna | Statement of Work} % Report title or other text to appear in the left header
+
+\rightheadercontent{\includegraphics[width=3cm]{logo-light-bg-v1.png}}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+% The code here uses the information set in the REPORT INFORMATION block above and does not need to be modified unless you want to change the layout of the title section.
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\vspace*{-0.075\textheight} % Pull logo into top margin
+
+\hfill\includegraphics[width=5cm]{logo-light-bg-v1.png} % Right-aligned company logo
+
+\vspace{0.06\textheight} % Vertical whitespace
+
+{\large\raggedright\reportdate\par} % Report date
+
+\vspace{0.01\textheight} % Vertical whitespace
+
+{\fontsize{32pt}{34pt}\selectfont\raggedright\textbf{\reporttitle}\par} % Report title
+
+\vspace{0.03\textheight} % Vertical whitespace
+
+{\Large\raggedright\textit{\textbf{\reportsubtitle}}\par} % Subtitle
+
+\vspace{0.06\textheight} % Vertical whitespace
+
+{\large\raggedright\reportauthors\par} % Report authors, group or department
+
+\vspace{0.12\textheight} % Vertical whitespace
+
+%----------------------------------------------------------------------------------------
+
+
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Output the table of contents, automatically generated from the section commands used in the document
+
+%----------------------------------------------------------------------------------------
+%	SECTIONS AND PARAGRAPHS
+%----------------------------------------------------------------------------------------
+\newpage
+\section{Overview} % Top level section
+
+RadioLuna intend to deploy a scientific payload (P/L) into lunar orbit, where the goal of the P/L is the detection of the primordial cosmic HI radiation, originally emitted at 1.4GHz and redshifted to the 20-100 MHz frequency range.
+
+The P/L will be hosted on a small spacecraft (S/C) in lunar orbit, and will operate when the S/C is shielded by the moon from both terrestrial and solar radio emission.
+
+In the current phase, Chaos Engine will be tasked with producing a high-level proposal for a payload that would be integrated into the satellite using COTS components where possible, and to evaluate feasibility with respect to mission requirements.
+This document will outline the scope of work, deliverables and key dates.
+
+\section {Scope of Work}
+\begin{callout_box}{Note}
+Chaos Engineers and customer are both aware that to date no COTS antenna operating at the target frequency range has been identified, and agree that the study strategy will include the assessment of existing antennas operating at higher frequencies (typically VHF band) and customer-led discussions with commercial S/C component providers for custom-designed antennas.
+\end{callout_box}
+
+In the current phase, Chaos Engine has been tasked with the preliminary, feasibility-level design of the scientific payload (P/L) for a small spacecraft.
+
+The characteristics of the P/L will be boundary constrained (supplied by the customer), although detailed characteristics may be provided and refined during the activity, an initial volume constraint of 30x30x30 cm will be considered.
+
+While the ideal implementation of the P/L would detect radio emissions in the complete 20-100 MHz, this should be treated as a goal, and the tradeoff between frequency range, cost, complexity, etc., should all be considered during the work.
+
+The design principle will be to, where possible, use flight-proven, commercially available components (COTS), including SDR receivers, P/L compute and the antenna. Custom component design should only be considered when there are not feasible COTS candidates.
+
+Chaos Engine is tasked with:
+\begin{itemize}
+\item{Producing a block-level design of the complete P/L}
+\item{Describing possible modifications to the COTs components}
+\item{Estimating both the minimum and maximum budget for Mass, Power, Noise and Volume for the P/L}
+\item{Identifying potential mitigations for noise, with specific focus on the sub-systems/components that contribute the most to the noise budget}
+\item{Providing rough order of magnitude (ROM) assessment of the cost}
+\item{Describing the detection chain and how it operates (incl. Frequency range, etc.)}
+\item{Providing a ROM of the data volume produced}
+\item{Identifying and describing any software (S/W) modifications to the COTS SDR components and provide a ROM cost of implementation}
+\end{itemize}
+
+The report will not go into detailed designs of the hardware and software (Schematic, PCB, Software libraries, etc.) as this depends on the final component selection that will come at a later phase in the RadioLuna project.
+
+
+\section{Deliverables}
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{clll}
+    \toprule
+    \textit{\#} & \textbf{Deliverable}  & \textbf{Due} & \textbf{Format} \\
+    \toprule
+    D-01 & Report Release Candidate & Oct 2025 & .pdf and .tex \\
+    D-02 & Final Report & Feb 2026 & .pdf and .tex \\
+  \end{tabularx}
+\end{table}
+
+Thalatta Consulting Ltd will be able to decide a go/no-go at the delivery of D-01 as long as work for D-02 has not commenced.
+
+\section{Costs}
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{cll}
+    \toprule
+    \textit{\#} & \textbf{Line Item}  & \textbf{Cost (EUR)} \\
+    \toprule
+    C-01 & Delivery of Report Release Candidate for Nov 2025 Progress Meeting  & 5,500 \\
+    C-02 & Delivery of Final Report for May 2026 Proposal & 5,500 \\
+    \bottomrule
+    & & \textbf{11,000}\\
+  \end{tabularx}
+\end{table}
+All costs are exclusive of any reimbursements or expenditures incurred outside of the scoped work.
+
+An initial 20\% deposit will be paid on commencement of the project.
+\section{Key Dates}
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{cll}
+    \toprule
+    \textit{\#} & \textbf{Description}  & \textbf{Date} \\
+    \toprule
+    K-01 & Progress Meeting: \textit{D-01 delivered before this.}  &  November 2025 \\
+    K-02 & Review Meeting: \textit{D-02 delivered before this.}  &  March 2026 \\
+    K-03 & Final Proposal &  May 2026 \\
+  \end{tabularx}
+\end{table}
+
+\newpage
+\section{Approvals}
+
+\signature{Dr. Fabio Favata, Ph.D}{Founding Director}{Thalatta Consulting Ltd}
+
+\signature{Dr. Ahmed Al-Refaie, Ph.D}{Co-founder, Software and Algorithmic Lead}{Chaos Engineers Ltd}
+
+\signature{Yassir Al-Refaie}{Co-founder, Hardware and Embedded Systems Lead}{Chaos Engineers Ltd}
+
+
+
+\vfill % Push text to the bottom of the page
+%----------------------------------------------------------------------------------------
+%	DISCLAIMER/COPYRIGHT TEXT
+%----------------------------------------------------------------------------------------
+\begingroup
+	\footnotesize % Reduce font size
+	
+%	\subsection*{Disclaimer}
+
+	\subsection*{Copyright}
+	
+	\textcopyright~\the\year{} Chaos Engineers Ltd (t/a Chaos Engine) 
+	
+	\subsection*{Contact}
+	
+	Flat 401 City View House\\
+	463 Bethnal Green Road\\
+	London, E2 9QY, UK
+	
+	Business Number 16430139
+	
+	Contact: yassir@chaos-engine.co
+\endgroup
+
+\end{document}
