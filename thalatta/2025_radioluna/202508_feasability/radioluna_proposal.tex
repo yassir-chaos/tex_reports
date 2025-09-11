@@ -1,0 +1,190 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper, % Paper size, use either a4paper or letterpaper
+	%unnumberedsections, % Uncomment for no section numbering
+]{ChaosEngineReport}
+
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{lipsum} 
+\usepackage[acronym]{glossaries}
+
+\addbibresource{bibliography.bib} % BibLaTeX bibliography file
+
+%----------------------------------------------------------------------------------------
+%   GLOSSARY DEFINITIONS
+%----------------------------------------------------------------------------------------
+\makeglossaries
+\newacronym{sdr}{SDR}{Software-Defined Radio}
+\newacronym{cots}{COTS}{Commercial Off-the-Shelf}
+\newacronym{vhf}{HF/VHF}{High/Very-High Frequency}
+\newacronym{esa}{ESA}{European Space Agency}
+\newacronym{sdp}{SDP}{Software-Defined Payload}
+
+%--------------------------------------------------------------------------------------
+%	REPORT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\reporttitle{RadioLuna} % The report title to appear on the title page, include new lines if needed
+
+\reportsubtitle{COTS Receiver Proposal} % Report subtitle, include new lines if needed
+
+\reportauthors{Prepared by:\\\smallskip Yassir Al-Refaie (yassir@chaos-engine.co)\\\smallskip Dr. Ahmed Al-Refaie (ahmed@chaos-engine.co)} % Report authors/group/department, include new lines if needed
+
+\reportdate{\today} % Report date, include new lines for additional information if needed
+
+\leftheadercontent{RadioLuna | COTS Receiver Proposal} % Report title or other text to appear in the left header
+
+\rightheadercontent{\includegraphics[width=3cm]{logo-light-bg-v1.png}}
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+% The code here uses the information set in the REPORT INFORMATION block above and does not need to be modified unless you want to change the layout of the title section.
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\vspace*{-0.075\textheight} % Pull logo into top margin
+
+\hfill\includegraphics[width=5cm]{logo-light-bg-v1.png} % Right-aligned company logo
+
+\vspace{0.06\textheight} % Vertical whitespace
+
+{\large\raggedright\reportdate\par} % Report date
+
+\vspace{0.01\textheight} % Vertical whitespace
+
+{\fontsize{32pt}{34pt}\selectfont\raggedright\textbf{\reporttitle}\par} % Report title
+
+\vspace{0.03\textheight} % Vertical whitespace
+
+{\Large\raggedright\textit{\textbf{\reportsubtitle}}\par} % Subtitle
+
+\vspace{0.06\textheight} % Vertical whitespace
+
+{\large\raggedright\reportauthors\par} % Report authors, group or department
+
+\vspace{0.12\textheight} % Vertical whitespace
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % Begin two column mode
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Output the table of contents, automatically generated from the section commands used in the document
+
+%----------------------------------------------------------------------------------------
+%	SECTIONS AND PARAGRAPHS
+%----------------------------------------------------------------------------------------
+
+\section{Executive Summary} % Top level section
+
+\lipsum[3]
+
+\newpage
+
+\section {Introduction}
+\subsection{RadioLuna Objective}
+The objective for \textbf{RadioLuna} is to deploy micro-satellites in lunar orbit as a constellation of sub-systems, rather than the traditional paradigm of a monolithic satellite containing all possible sensors.
+
+This is possible now as micro-satellite launch capabilities have improved drastically, along with the commoditisation of advanced sensing capabilities. Further, pushing advanced computation and processing of the signals downstream from the satellite will reduce the complexity of each sensor node.
+
+Through this 'modular' approach, \textbf{RadioLuna} should help to reduce the cost and risk of any one launch, and encourage a robust academic and commercial lunar ecosystem.
+
+The initial payload proposes the use of a \acrfull{sdr} receiver with minimal customization. This payload should
+\begin{itemize}
+\item{operate as a payload to a small-satellite platform (presumed to be \href{https://www.ohb-italia.it/satellites-missions/}{M3 from OHB Italia});}
+\item{be sensitive to signals in the 20MHz-200MHz range;}
+\item{fit within a 30x30x30cm volume budget; and}
+\item{where possible, be made from \acrfull{cots} components;}
+\end{itemize}
+
+This payload is intended to be deployed in lunar orbit and will use the dark-side of the moon during full-moons to filter out terrestrial and solar interference to be able to receive the 21cm cosmic hydrogen signal \autocite{Pritchard_2012}.
+
+\subsection{Report Objective}
+The objective of this report is to develop a systems-level design for a CubeSat payload supporting \acrfull{vhf} band communications using a \acrshort{sdr}.
+
+\acrshort{sdr}s are especially suited to this type of mission as they enable in-orbit configuration without greatly impacting mass or volume of the overall payload. In 2008, the \acrfull{esa} defined \acrfull{sdp}s as payloads "consisting of on-board hardware and software technologies to in-flight reconfigure sattelite payloads for multiple different communications scenario"\autocite{angeletti:2008}.
+
+\section{System Design}
+\subsection{Payload Receiver}
+Talk about digital communications, the SDR, BPF etc.
+
+\section{Hardware}
+
+\section{Software}
+\newpage
+
+
+\end{multicols} % End two column mode
+
+%----------------------------------------------------------------------------------------
+%	DISCLAIMER/COPYRIGHT TEXT
+%----------------------------------------------------------------------------------------
+
+\vfill % Push text to the bottom of the page
+
+\begingroup
+	\footnotesize % Reduce font size
+	
+	\subsection*{Disclaimer}
+
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit.
+	
+	\subsection*{Copyright}
+	
+	\textcopyright~\the\year{} Chaos Engineers Ltd (t/a Chaos Engine) 
+	
+	Copyright notice text\ldots In hac habitasse platea dictumst. Curabitur mattis elit sit amet justo luctus vestibulum. In hac habitasse platea dictumst. Pellentesque lobortis justo enim, a condimentum massa tempor eu. Ut quis nulla a quam pretium eleifend nec eu nisl. Nam cursus porttitor eros, sed luctus ligula convallis quis.
+	
+	\subsection*{Contact}
+	
+	Flat 401 City View House\\
+	463 Bethnal Green Road\\
+	London, E2 9QY, UK
+	
+	Business Number 16430139
+	
+	Contact: yassir@chaos-engine.co
+\endgroup
+%----------------------------------------------------------------------------------------
+%	APPENDICES
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section*{Appendices}
+
+\begin{appendices}
+\section{Bill of Materials}
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{cXlXXlcccc}
+    \toprule
+    \textit{\#} & \textbf{Vendor} & \textbf{Part \#} & \textbf{Name} & \textbf{Function} & \textbf{Leadtime} & \textbf{Qty.} & \textbf{Min. Units} & \textbf{Unit Price} & \textbf{Total} \\
+    \midrule
+    1           & Lesker          & QF50-200-6X      & 6-way cross   & Chamber               & In Stock          & 1             & 1                   & 306                 & 306            \\
+    2           & McMaster-Carr   & 98381A428        & Steel Pin     & Attach Boat to Flange & In Stock          & 2             & 1                   & 3.4                 & 6.8            \\
+    \midrule
+                &                 &                  &               &                       &                   & 3             &                     &                     & 312.8 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\end{appendices}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
