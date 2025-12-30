@@ -34,13 +34,13 @@
 
 \reporttitle{RadioLuna} % The report title to appear on the title page, include new lines if needed
 
-\reportsubtitle{COTS Receiver Proposal} % Report subtitle, include new lines if needed
+\reportsubtitle{\acrshort{vhf} Receiver Payload Feasibility} % Report subtitle, include new lines if needed
 
 \reportauthors{Prepared by:\\\smallskip Yassir Al-Refaie (yassir@chaos-engine.co)\\\smallskip Dr. Ahmed Al-Refaie (ahmed@chaos-engine.co)} % Report authors/group/department, include new lines if needed
 
 \reportdate{\today} % Report date, include new lines for additional information if needed
 
-\leftheadercontent{RadioLuna | COTS Receiver Proposal} % Report title or other text to appear in the left header
+\leftheadercontent{RadioLuna | \reportsubtitle} % Report title or other text to appear in the left header
 
 \rightheadercontent{\includegraphics[width=3cm]{logo-light-bg-v1.png}}
 %----------------------------------------------------------------------------------------
@@ -122,9 +122,38 @@ The objective of this report is to develop a systems-level design for a CubeSat 
 \subsection{Payload Receiver}
 Talk about digital communications, the SDR, BPF etc.
 
+\includegraphics[*]{plantuml/payload_receiver.png}
+
 \section{Hardware}
 
+\subsection{SDR}
+\subsubsection{Requirements}
+Notes:
+\begin{itemize}
+\item{Should be sensitive between 10-100MHz (Confirm)}
+\item{Should be COTs}
+\end{itemize}
+
+\subsection{Antenna}
+\subsubsection{Requirements}
+\begin{itemize}
+\item{Should be sensitive to 10-100MHz range (Confirm)}
+\item{Should be COTs}
+\end{itemize}
+
+\subsection{Compute Module}
+\subsubsection{Requirements}
+
 \section{Software}
+\subsection{SDR Software}
+\subsubsection{Requirements}
+
+\subsection{SDR Controller}
+\subsubsection{Requirements}
+
+\subsection{Payload Former}
+\subsubsection{Requirements}
+
 \newpage
 
 

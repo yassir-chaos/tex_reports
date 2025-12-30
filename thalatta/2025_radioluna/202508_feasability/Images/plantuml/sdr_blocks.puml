@@ -1,0 +1,20 @@
+@startuml
+
+antenna as [HF/VHF Antenna]
+bpf as [Bandpass Filter]
+
+rectangle "Accomplished by SDR" #line.dashed {
+	demodulator as [Demodulator]
+	symbol_detector as [Symbol Detector]
+	source_detector as [Source Detector]
+	}
+sink as [Information Sink]
+
+antenna -down-> bpf
+bpf -right-> demodulator : Bandpass Signal
+
+demodulator -right-> symbol_detector : Baseband Signal
+symbol_detector ->source_detector
+
+source_detector -> sink
+@enduml
